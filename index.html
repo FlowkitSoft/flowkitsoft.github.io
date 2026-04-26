@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="Flowkit - Repository unduh berbagai macam teknologi software dan perangkat lunak untuk keamanan, pengembangan, dan utilitas">
+    <title>Flowkit - Repository Software</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2341ff41'%3E%3Cpath d='M2.47,5.47H21.53V4H2.47M2.47,9.53H21.53V8.06H2.47M2.47,13.56H21.53V12.09H2.47M2.47,17.59H21.53V16.13H2.47'/%3E%3C/svg%3E">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-tasks"></i>
+                <span>FLOWKIT</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="mailto:contact@flowkit.com" class="contact-btn">
+                    <i class="fas fa-paper-plane"></i> KONTAK
+                </a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+                <div class="terminal-badge">
+                    <span class="terminal-dot red"></span>
+                    <span class="terminal-dot yellow"></span>
+                    <span class="terminal-dot green"></span>
+                    <span class="terminal-text">root@flowkit:~#</span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="glitch" data-text="REPOSITORY">REPOSITORY</span>
+                    <span class="hero-accent">TECHNOLOGI SOFTWARE</span>
+                </h1>
+                <p class="hero-desc">Kumpulan berbagai macam software dan perangkat lunak untuk kebutuhan <span class="highlight">keamanan siber</span>, <span class="highlight">pengembangan</span>, dan <span class="highlight">utilitas</span>. Download gratis dan open source.</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-database"></i>
+                        <span id="totalSoftwareCount">0</span>
+                        <span>Software</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-download"></i>
+                        <span>10k+</span>
+                        <span>Total Unduhan</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-code-branch"></i>
+                        <span>100%</span>
+                        <span>Open Source</span>
+                    </div>
+                </div>
+                <div class="hero-command">
+                    <code>$ git clone https://github.com/flowkit/repo.git</code>
+                    <button class="copy-btn" onclick="copyToClipboard('git clone https://github.com/flowkit/repo.git')">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOFTWARE SECTION dengan SEARCH & PAGINATION -->
+    <section class="software">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">// AVAILABLE TOOLS</span>
+                <h2>Software & Perangkat Lunak</h2>
+                <p>Pilih software yang Anda butuhkan, semua tersedia untuk diunduh secara gratis</p>
+            </div>
+            
+            <!-- SEARCH BAR -->
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Cari software..." onkeyup="searchSoftware()">
+                    <button class="search-clear" id="clearSearch" onclick="clearSearch()" style="display: none;">✕</button>
+                </div>
+                <div class="search-info">
+                    <span id="resultInfo">Menampilkan semua software</span>
+                </div>
+            </div>
+            
+            <!-- SOFTWARE GRID (dinamis) -->
+            <div class="software-grid" id="softwareGrid">
+                <!-- Card akan di-generate oleh JavaScript -->
+            </div>
+            
+            <!-- PAGINATION -->
+            <div class="pagination-container" id="paginationContainer">
+                <!-- Tombol pagination akan di-generate oleh JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- INFO MODAL -->
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle"></h3>
+                <span class="modal-close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p id="modalDesc"></p>
+                <div id="modalTech"></div>
+                <div class="modal-download">
+                    <a href="#" id="modalDownload" class="btn-download-modal"><i class="fas fa-download"></i> Download Sekarang</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ABOUT / TERMINAL SECTION -->
+    <section class="about-terminal">
+        <div class="container">
+            <div class="terminal-window" data-aos="fade-up">
+                <div class="terminal-header">
+                    <span class="terminal-dot red"></span>
+                    <span class="terminal-dot yellow"></span>
+                    <span class="terminal-dot green"></span>
+                    <span class="terminal-title">flowkit@repository:~</span>
+                </div>
+                <div class="terminal-body">
+                    <p><span class="prompt">$</span> <span class="command">cat about.txt</span></p>
+                    <pre class="terminal-simple">
+FLOWKIT - REPOSITORY SOFTWARE
+==============================
+Version: 2.0.0                              Release: 2025
+
+Flowkit adalah repository kumpulan berbagai macam software dan perangkat
+lunak untuk kebutuhan keamanan siber, pengembangan, bisnis, dan utilitas.
+
+Semua software tersedia secara GRATIS dan OPEN SOURCE.
+Kontribusi dan feedback sangat kami harapkan.
+
+GitHub: https://github.com/flowkit
+Email: contact@flowkit.com
+                    </pre>
+                    <p><span class="prompt">$</span> <span class="command blinking">_</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="logo">
+                        <i class="fas fa-tasks"></i>
+                        <span>FLOWKIT</span>
+                    </div>
+                    <p>Repository kumpulan berbagai macam teknologi software dan perangkat lunak.</p>
+                    <div class="footer-links">
+                        <a href="mailto:contact@flowkit.com"><i class="fas fa-envelope"></i> contact@flowkit.com</a>
+                        <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 FLOWKIT | Repository Teknologi Software | #StaySecure #OpenSource</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS -->
+    <script src="js/software-data.js"></script>
+    <script src="js/script.js"></script>
+    
+    <!-- Initialize AOS -->
+    <script>
+        AOS.init({
+            once: true,
+            duration: 800
+        });
+        
+        // Inisialisasi halaman setelah data loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof renderSoftwareGrid === 'function') {
+                renderSoftwareGrid();
+            }
+        });
+    </script>
+</body>
+</html>
