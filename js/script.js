@@ -28,7 +28,6 @@ function renderSoftwareGrid() {
     // Build HTML untuk setiap card
     let html = '';
     paginatedItems.forEach((software, index) => {
-        // delay animasi untuk efek stagger
         const delay = 100 + (index * 50);
         html += `
             <div class="software-card" data-aos="fade-up" data-aos-delay="${delay}">
@@ -114,7 +113,6 @@ function renderPagination() {
 function changePage(page) {
     currentPage = page;
     renderSoftwareGrid();
-    // Scroll ke section software
     document.querySelector('.software').scrollIntoView({ behavior: 'smooth' });
 }
 
@@ -162,13 +160,12 @@ const modalTech = document.getElementById('modalTech');
 const modalDownload = document.getElementById('modalDownload');
 const closeModal = document.querySelector('.modal-close');
 
-// Build software details dari array
+// Build software details dari array (tanpa infoTech)
 const softwareDetails = {};
 softwareList.forEach(software => {
     softwareDetails[software.infoId] = {
         title: software.infoTitle,
         desc: software.infoDesc,
-        tech: software.infoTech,
         download: software.download
     };
 });
@@ -177,10 +174,14 @@ function showInfo(softwareId) {
     const data = softwareDetails[softwareId];
     if (data) {
         modalTitle.textContent = data.title;
-        modalDesc.textContent = data.desc;
-        modalTech.innerHTML = `<i class="fas fa-code"></i> Technology: ${data.tech}`;
+        // Mengganti newline dengan <br> untuk tampilan rapi
+        const formattedDesc = data.desc.replace(/\n/g, '<br>');
+        modalDesc.innerHTML = formattedDesc;
         modalDownload.href = data.download;
         modal.style.display = 'flex';
+        
+        // Sembunyikan elemen modalTech karena tidak digunakan
+        if (modalTech) modalTech.style.display = 'none';
     }
 }
 
@@ -200,7 +201,7 @@ window.onclick = function(event) {
 // ========== COPY TO CLIPBOARD ==========
 function copyToClipboard(text) {
     navigator.clipboard.writeText(text).then(() => {
-        alert('✅ Perintah berhasil disalin!');
+        alert('Perintah berhasil disalin!');
     });
 }
 
@@ -232,6 +233,37 @@ window.addEventListener('scroll', function() {
     } else {
         navbar.style.backgroundColor = 'rgba(10, 12, 15, 0.95)';
     }
+});
+
+// ========== TYPING EFFECT DI HERO-COMMAND (LOOPING) ==========
+document.addEventListener('DOMContentLoaded', function() {
+    const textToType = "https://flowkitsoft.github.io/";
+    const typingElement = document.getElementById('typingText');
+    if (!typingElement) return;
+
+    let i = 0;
+    let isDeleting = false;
+
+    function typeWriter() {
+        if (!isDeleting && i <= textToType.length) {
+            typingElement.innerHTML = textToType.substring(0, i);
+            i++;
+            setTimeout(typeWriter, 60);
+        } else if (isDeleting && i >= 0) {
+            typingElement.innerHTML = textToType.substring(0, i);
+            i--;
+            setTimeout(typeWriter, 30);
+        } else if (i === textToType.length + 1) {
+            isDeleting = true;
+            setTimeout(typeWriter, 1500);
+        } else if (i === -1) {
+            isDeleting = false;
+            i = 0;
+            setTimeout(typeWriter, 500);
+        }
+    }
+
+    typeWriter();
 });
 
 // ========== INITIAL RENDER ==========

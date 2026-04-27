@@ -70,9 +70,15 @@
                         <span>Open Source</span>
                     </div>
                 </div>
+
+                <!-- HERO COMMAND DENGAN EFEK TYPING (UKURAN KECIL) -->
                 <div class="hero-command">
-                    <code>$ git clone https://github.com/flowkit/repo.git</code>
-                    <button class="copy-btn" onclick="copyToClipboard('git clone https://github.com/flowkit/repo.git')">
+                    <div class="command-wrapper">
+                        <span class="prompt">$</span>
+                        <span class="typing-text" id="typingText"></span>
+                        <span class="cursor">|</span>
+                    </div>
+                    <button class="copy-btn" onclick="copyToClipboard('https://flowkitsoft.github.io/')">
                         <i class="fas fa-copy"></i>
                     </button>
                 </div>
@@ -122,7 +128,6 @@
             </div>
             <div class="modal-body">
                 <p id="modalDesc"></p>
-                <div id="modalTech"></div>
                 <div class="modal-download">
                     <a href="#" id="modalDownload" class="btn-download-modal"><i class="fas fa-download"></i> Download Sekarang</a>
                 </div>
@@ -179,7 +184,7 @@ Email: contact@flowkit.com
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 FLOWKIT | Repository Teknologi Software | #StaySecure #OpenSource</p>
+                <p>&copy; 2026 FLOWKIT | Repository Teknologi Software | #StaySecure #OpenSource</p>
             </div>
         </div>
     </footer>
@@ -193,13 +198,6 @@ Email: contact@flowkit.com
         AOS.init({
             once: true,
             duration: 800
-        });
-        
-        // Inisialisasi halaman setelah data loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            if (typeof renderSoftwareGrid === 'function') {
-                renderSoftwareGrid();
-            }
         });
     </script>
 </body>

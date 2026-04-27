@@ -13,8 +13,7 @@ const softwareList = [
         download: 'https://github.com/FlowkitSoft/ExCash/raw/refs/heads/main/EXCASH%20v1.0.zip',
         infoId: 'excash',
         infoTitle: 'ExCash',
-        infoDesc: 'Software kasir berbasis Excel yang dirancang untuk memudahkan manajemen penjualan, pembelian, dan stok barang. Dilengkapi dengan fitur laporan laba rugi real-time.',
-        infoTech: 'Microsoft Excel | VBA Macro | Pivot Table'
+        infoDesc: 'TUTORIAL DOWNLOAD & INSTALL ExCash:\n\n1. Klik tombol "Download" di bawah ini\n2. File ExCash.zip akan terdownload\n3. Extract file ZIP tersebut (klik kanan -> Extract Here)\n4. Setelah extract, akan muncul file ExCash.xlsm\n5. Double klik file ExCash.xlsm untuk membukanya\n6. Jika muncul peringatan macro, klik "Enable Content"\n7. Software siap digunakan'
     },
     {
         id: 2,
@@ -24,11 +23,10 @@ const softwareList = [
         desc: 'Software pencatatan hutang-piutang dengan monitoring jatuh tempo dan laporan keuangan akurat.',
         meta1: '<i class="fas fa-chart-line"></i> Akuntansi',
         meta2: '<i class="fas fa-file-excel"></i> Excel',
-        download: '#',
+        download: 'https://github.com/FlowkitSoft/ExDebt/raw/refs/heads/main/EXDEBT%20v2.0.zip',
         infoId: 'exdebt',
         infoTitle: 'ExDebt',
-        infoDesc: 'Aplikasi pencatatan hutang-piutang dengan sistem monitoring jatuh tempo pembayaran. Memudahkan pengelolaan data debitur dan laporan keuangan.',
-        infoTech: 'Microsoft Excel | VBA Programming | Data Validation'
+        infoDesc: 'TUTORIAL DOWNLOAD & INSTALL ExDebt:\n\n1. Klik tombol "Download" di bawah ini\n2. File ExDebt.zip akan terdownload\n3. Extract file ZIP tersebut (klik kanan -> Extract Here)\n4. Setelah extract, akan muncul file ExDebt.xlsm\n5. Double klik file ExDebt.xlsm untuk membukanya\n6. Jika muncul peringatan macro, klik "Enable Content"\n7. Software siap digunakan'
     },
     {
         id: 3,
@@ -41,8 +39,7 @@ const softwareList = [
         download: 'https://github.com/FlowkitSoft/WebKit/raw/refs/heads/main/WEBKIT%20v2.0.zip',
         infoId: 'webkit',
         infoTitle: 'WebKit',
-        infoDesc: 'Platform web untuk replikasi antarmuka media sosial populer. Ideal untuk keperluan demonstrasi UI/UX, prototyping, dan pembelajaran front-end.',
-        infoTech: 'HTML5 | CSS3 | JavaScript ES6'
+        infoDesc: 'TUTORIAL DOWNLOAD & INSTALL WebKit:\n\n1. Klik tombol "Download" di bawah ini\n2. File WebKit.zip akan terdownload\n3. Extract file ZIP tersebut (klik kanan -> Extract Here)\n4. Pastikan Node.js sudah terinstall di komputer Anda\n   (Download Node.js di https://nodejs.org)\n5. Buka terminal/CMD, masuk ke folder WebKit hasil extract\n6. Ketik perintah: npm install -g\n7. Setelah selesai, jalankan dengan perintah: npm start\n8. Buka browser dan akses alamat yang muncul (biasanya http://localhost:3000)'
     },
     {
         id: 4,
@@ -55,8 +52,7 @@ const softwareList = [
         download: 'https://github.com/FlowkitSoft/HashKit/raw/refs/heads/main/HASHKIT%20v1.0.zip',
         infoId: 'hashkit',
         infoTitle: 'Hashkit',
-        infoDesc: 'Cryptographic hash generator untuk mengkonversi teks menjadi kode hash dengan berbagai algoritma (MD5, SHA-1, SHA-256).',
-        infoTech: 'PHP 8 | JavaScript | OpenSSL'
+        infoDesc: 'TUTORIAL DOWNLOAD & INSTALL Hashkit:\n\n1. Klik tombol "Download" di bawah ini\n2. File Hashkit.zip akan terdownload\n3. Extract file ZIP tersebut (klik kanan -> Extract Here)\n4. Pastikan Node.js sudah terinstall di komputer Anda\n   (Download Node.js di https://nodejs.org)\n5. Buka terminal/CMD, masuk ke folder Hashkit hasil extract\n6. Ketik perintah: npm install -g\n7. Setelah selesai, jalankan dengan perintah: npm start\n8. Buka browser dan akses alamat yang muncul (biasanya http://localhost:3000)'
     },
     {
         id: 5,
@@ -69,8 +65,7 @@ const softwareList = [
         download: '#',
         infoId: 'rat',
         infoTitle: 'RAT - Remote Admin Tool',
-        infoDesc: 'Perangkat administrasi jarak jauh dengan enkripsi SSL/TLS. Memungkinkan pengelolaan server dan device secara remote.',
-        infoTech: 'Python 3 | Socket Programming | SSL/TLS'
+        infoDesc: 'TUTORIAL DOWNLOAD & INSTALL RAT:\n\n1. Klik tombol "Download" di bawah ini\n2. File RAT.zip akan terdownload\n3. Extract file ZIP tersebut (klik kanan -> Extract Here)\n4. Setelah extract, akan muncul file RAT.exe\n5. Double klik file RAT.exe untuk menjalankannya\n6. Jika muncul peringatan keamanan, klik "Run Anyway"\n7. Software siap digunakan'
     },
     {
         id: 6,
@@ -83,8 +78,7 @@ const softwareList = [
         download: '#',
         infoId: 'compile',
         infoTitle: 'Program Compile',
-        infoDesc: 'Utility untuk menggabungkan dua atau lebih program menjadi satu aplikasi terintegrasi. Mendukung berbagai format binary.',
-        infoTech: 'C++ | Linker | Binary Merger'
+        infoDesc: 'TUTORIAL DOWNLOAD & INSTALL Program Compile:\n\n1. Klik tombol "Download" di bawah ini\n2. File Compile.zip akan terdownload\n3. Extract file ZIP tersebut (klik kanan -> Extract Here)\n4. Pastikan Node.js sudah terinstall di komputer Anda\n   (Download Node.js di https://nodejs.org)\n5. Buka terminal/CMD, masuk ke folder Compile hasil extract\n6. Ketik perintah: npm install -g\n7. Setelah selesai, jalankan dengan perintah: npm start\n8. Buka browser dan akses alamat yang muncul (biasanya http://localhost:3000)'
     }
 ];
 
@@ -104,7 +98,6 @@ const softwareList = [
     download: '#',
     infoId: 'namasoftware',
     infoTitle: 'Nama Software',
-    infoDesc: 'Deskripsi lengkap untuk modal...',
-    infoTech: 'Tech stack yang digunakan'
+    infoDesc: 'TUTORIAL DOWNLOAD & INSTALL Nama Software:\n\n1. Langkah pertama...\n2. Langkah kedua...\n3. Langkah ketiga...'
 }
 */
