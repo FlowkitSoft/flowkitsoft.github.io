@@ -25,7 +25,6 @@ function renderSoftwareGrid() {
         return;
     }
     
-    // Build HTML untuk setiap card
     let html = '';
     paginatedItems.forEach((software, index) => {
         const delay = 100 + (index * 50);
@@ -51,20 +50,16 @@ function renderSoftwareGrid() {
     
     softwareGrid.innerHTML = html;
     
-    // Update total software count
     document.getElementById('totalSoftwareCount').innerText = softwareList.length;
     
-    // Update result info
     const startNum = startIndex + 1;
     const endNum = Math.min(endIndex, filteredSoftware.length);
     document.getElementById('resultInfo').innerHTML = `Menampilkan ${startNum}-${endNum} dari ${filteredSoftware.length} software`;
     
-    // Reinit AOS untuk animasi card baru
     if (typeof AOS !== 'undefined') {
         AOS.refresh();
     }
     
-    // Render pagination
     renderPagination();
 }
 
@@ -82,14 +77,12 @@ function renderPagination() {
     
     let html = '<div class="pagination">';
     
-    // Tombol Previous
     if (currentPage > 1) {
         html += `<button class="page-btn" onclick="changePage(${currentPage - 1})"><i class="fas fa-chevron-left"></i> Sebelumnya</button>`;
     } else {
         html += `<button class="page-btn disabled" disabled><i class="fas fa-chevron-left"></i> Sebelumnya</button>`;
     }
     
-    // Nomor halaman
     for (let i = 1; i <= totalPages; i++) {
         if (i === currentPage) {
             html += `<button class="page-btn active" onclick="changePage(${i})">${i}</button>`;
@@ -98,7 +91,6 @@ function renderPagination() {
         }
     }
     
-    // Tombol Next
     if (currentPage < totalPages) {
         html += `<button class="page-btn" onclick="changePage(${currentPage + 1})">Selanjutnya <i class="fas fa-chevron-right"></i></button>`;
     } else {
@@ -156,11 +148,9 @@ function clearSearch() {
 const modal = document.getElementById('infoModal');
 const modalTitle = document.getElementById('modalTitle');
 const modalDesc = document.getElementById('modalDesc');
-const modalTech = document.getElementById('modalTech');
 const modalDownload = document.getElementById('modalDownload');
 const closeModal = document.querySelector('.modal-close');
 
-// Build software details dari array (tanpa infoTech)
 const softwareDetails = {};
 softwareList.forEach(software => {
     softwareDetails[software.infoId] = {
@@ -174,18 +164,13 @@ function showInfo(softwareId) {
     const data = softwareDetails[softwareId];
     if (data) {
         modalTitle.textContent = data.title;
-        // Mengganti newline dengan <br> untuk tampilan rapi
         const formattedDesc = data.desc.replace(/\n/g, '<br>');
         modalDesc.innerHTML = formattedDesc;
         modalDownload.href = data.download;
         modal.style.display = 'flex';
-        
-        // Sembunyikan elemen modalTech karena tidak digunakan
-        if (modalTech) modalTech.style.display = 'none';
     }
 }
 
-// Close modal
 if (closeModal) {
     closeModal.onclick = function() {
         modal.style.display = 'none';
@@ -205,37 +190,7 @@ function copyToClipboard(text) {
     });
 }
 
-// ========== SMOOTH SCROLL ==========
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const target = document.querySelector(targetId);
-        if (target) {
-            e.preventDefault();
-            const navbarHeight = document.querySelector('.navbar').offsetHeight;
-            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
-            
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
-
-// ========== NAVBAR SCROLL EFFECT ==========
-window.addEventListener('scroll', function() {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        navbar.style.backgroundColor = 'rgba(10, 12, 15, 0.98)';
-    } else {
-        navbar.style.backgroundColor = 'rgba(10, 12, 15, 0.95)';
-    }
-});
-
-// ========== TYPING EFFECT DI HERO-COMMAND (LOOPING) ==========
+// ========== TYPING EFFECT ==========
 document.addEventListener('DOMContentLoaded', function() {
     const textToType = "https://flowkitsoft.github.io/";
     const typingElement = document.getElementById('typingText');
@@ -248,14 +203,14 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!isDeleting && i <= textToType.length) {
             typingElement.innerHTML = textToType.substring(0, i);
             i++;
-            setTimeout(typeWriter, 60);
+            setTimeout(typeWriter, 80);
         } else if (isDeleting && i >= 0) {
             typingElement.innerHTML = textToType.substring(0, i);
             i--;
-            setTimeout(typeWriter, 30);
+            setTimeout(typeWriter, 40);
         } else if (i === textToType.length + 1) {
             isDeleting = true;
-            setTimeout(typeWriter, 1500);
+            setTimeout(typeWriter, 2000);
         } else if (i === -1) {
             isDeleting = false;
             i = 0;
@@ -268,5 +223,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // ========== INITIAL RENDER ==========
 document.addEventListener('DOMContentLoaded', function() {
-    renderSoftwareGrid();
+    if (typeof renderSoftwareGrid === 'function') {
+        renderSoftwareGrid();
+    }
 });

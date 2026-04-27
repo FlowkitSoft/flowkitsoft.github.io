@@ -1,6 +1,4 @@
 // ========== DATA SOFTWARE ==========
-// Tambah software baru cukup dengan menambah objek di array ini
-
 const softwareList = [
     {
         id: 1,
@@ -84,8 +82,6 @@ const softwareList = [
 
 // ====== CARA MENAMBAH SOFTWARE BARU ======
 // Salin blok kode di bawah ini dan tempelkan setelah software terakhir
-// Ubah nilainya sesuai dengan software baru
-
 /*
 {
     id: 7,
@@ -98,6 +94,6 @@ const softwareList = [
     download: '#',
     infoId: 'namasoftware',
     infoTitle: 'Nama Software',
-    infoDesc: 'TUTORIAL DOWNLOAD & INSTALL Nama Software:\n\n1. Langkah pertama...\n2. Langkah kedua...\n3. Langkah ketiga...'
+    infoDesc: 'TUTORIAL DOWNLOAD & INSTALL Nama Software:\n\n1. Langkah pertama...\n2. Langkah kedua...'
 }
 */

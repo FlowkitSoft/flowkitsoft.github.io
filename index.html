@@ -71,10 +71,10 @@
                     </div>
                 </div>
 
-                <!-- HERO COMMAND DENGAN EFEK TYPING (UKURAN KECIL) -->
+                <!-- HERO COMMAND - LEBAR TETAP -->
                 <div class="hero-command">
-                    <div class="command-wrapper">
-                        <span class="prompt">$</span>
+                    <span class="prompt">$</span>
+                    <div class="typing-wrapper">
                         <span class="typing-text" id="typingText"></span>
                         <span class="cursor">|</span>
                     </div>
@@ -86,7 +86,7 @@
         </div>
     </section>
 
-    <!-- SOFTWARE SECTION dengan SEARCH & PAGINATION -->
+    <!-- SOFTWARE SECTION -->
     <section class="software">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
@@ -107,15 +107,11 @@
                 </div>
             </div>
             
-            <!-- SOFTWARE GRID (dinamis) -->
-            <div class="software-grid" id="softwareGrid">
-                <!-- Card akan di-generate oleh JavaScript -->
-            </div>
+            <!-- SOFTWARE GRID -->
+            <div class="software-grid" id="softwareGrid"></div>
             
             <!-- PAGINATION -->
-            <div class="pagination-container" id="paginationContainer">
-                <!-- Tombol pagination akan di-generate oleh JavaScript -->
-            </div>
+            <div class="pagination-container" id="paginationContainer"></div>
         </div>
     </section>
 
@@ -193,7 +189,6 @@ Email: contact@flowkit.com
     <script src="js/software-data.js"></script>
     <script src="js/script.js"></script>
     
-    <!-- Initialize AOS -->
     <script>
         AOS.init({
             once: true,
