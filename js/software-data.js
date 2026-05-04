@@ -56,14 +56,14 @@ const softwareList = [
         id: 5,
         icon: 'fas fa-desktop',
         badge: '#Admin',
-        title: 'RAT - Remote Admin Tool',
+        title: 'RemotKit',
         desc: 'Alat administrasi jarak jauh dengan enkripsi SSL/TLS untuk manajemen server dan device.',
         meta1: '<i class="fas fa-network-wired"></i> Remote',
         meta2: '<i class="fab fa-python"></i> Python',
-        download: '#',
+        download: 'https://github.com/FlowkitSoft/RemotKit/raw/refs/heads/main/REMOTKIT.zip',
         infoId: 'rat',
-        infoTitle: 'RAT - Remote Admin Tool',
-        infoDesc: 'TUTORIAL DOWNLOAD & INSTALL RAT:\n\n1. Klik tombol "Download" di bawah ini\n2. File RAT.zip akan terdownload\n3. Extract file ZIP tersebut (klik kanan -> Extract Here)\n4. Setelah extract, akan muncul file RAT.exe\n5. Double klik file RAT.exe untuk menjalankannya\n6. Jika muncul peringatan keamanan, klik "Run Anyway"\n7. Software siap digunakan'
+        infoTitle: 'RemotKit',
+        infoDesc: 'TUTORIAL DOWNLOAD & INSTALL REMOTKIT:\n\n1. Klik tombol Download untuk mengunduh file RemotKit.zip\n2. Extract file ZIP tersebut\n3. Siapkan Python 3.12 (stabil) pada server dan client\n4. Buat venv: python -m venv venv\n5. Install requirement server\n6. Jalankan server\n7. Build client\n8. Di client: install Python 3.12\n9. Install requirement_client\n10. Jalankan client\n\n✅ Support OS: Windows, Linux, Android'
     },
     {
         id: 6,
