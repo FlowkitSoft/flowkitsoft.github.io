@@ -34,7 +34,7 @@ const softwareList = [
         desc: 'Platform web yang meniru antarmuka media sosial untuk keperluan demo, testing, dan pembelajaran.',
         meta1: '<i class="fab fa-html5"></i> HTML/CSS',
         meta2: '<i class="fab fa-js"></i> JavaScript',
-        download: 'https://github.com/FlowkitSoft/WebKit/raw/refs/heads/main/WEBKIT%20v2.0.zip',
+        download: 'https://github.com/FlowkitSoft/WebKit/raw/refs/heads/main/WEBKIT.zip',
         infoId: 'webkit',
         infoTitle: 'WebKit',
         infoDesc: 'TUTORIAL DOWNLOAD & INSTALL WebKit:\n\n1. Klik tombol "Download" di bawah ini\n2. File WebKit.zip akan terdownload\n3. Extract file ZIP tersebut (klik kanan -> Extract Here)\n4. Pastikan Node.js sudah terinstall di komputer Anda\n   (Download Node.js di https://nodejs.org)\n5. Buka terminal/CMD, masuk ke folder WebKit hasil extract\n6. Ketik perintah: npm install -g\n7. Setelah selesai, jalankan dengan perintah: npm start\n8. Buka browser dan akses alamat yang muncul (biasanya http://localhost:3000)'
@@ -47,7 +47,7 @@ const softwareList = [
         desc: 'Generator hash cryptographic (MD5, SHA-1, SHA-256) untuk enkripsi data dan verifikasi integritas.',
         meta1: '<i class="fas fa-lock"></i> Enkripsi',
         meta2: '<i class="fab fa-php"></i> PHP/JS',
-        download: 'https://github.com/FlowkitSoft/HashKit/raw/refs/heads/main/HASHKIT%20v1.0.zip',
+        download: 'https://github.com/FlowkitSoft/HashKit/raw/refs/heads/main/HASHKIT.zip',
         infoId: 'hashkit',
         infoTitle: 'Hashkit',
         infoDesc: 'TUTORIAL DOWNLOAD & INSTALL Hashkit:\n\n1. Klik tombol "Download" di bawah ini\n2. File Hashkit.zip akan terdownload\n3. Extract file ZIP tersebut (klik kanan -> Extract Here)\n4. Pastikan Node.js sudah terinstall di komputer Anda\n   (Download Node.js di https://nodejs.org)\n5. Buka terminal/CMD, masuk ke folder Hashkit hasil extract\n6. Ketik perintah: npm install -g\n7. Setelah selesai, jalankan dengan perintah: npm start\n8. Buka browser dan akses alamat yang muncul (biasanya http://localhost:3000)'
@@ -69,14 +69,14 @@ const softwareList = [
         id: 6,
         icon: 'fas fa-code-merge',
         badge: '#Utility',
-        title: 'Program Compile',
-        desc: 'Utility untuk menggabungkan dua atau lebih program menjadi satu aplikasi terintegrasi.',
+        title: 'XBinder',
+        desc: 'Utility untuk menggabungkan dua file EXE menjadi satu file dan menjalankannya secara bersamaan.',
         meta1: '<i class="fas fa-code"></i> Binary',
         meta2: '<i class="fas fa-cogs"></i> C++',
-        download: '#',
-        infoId: 'compile',
-        infoTitle: 'Program Compile',
-        infoDesc: 'TUTORIAL DOWNLOAD & INSTALL Program Compile:\n\n1. Klik tombol "Download" di bawah ini\n2. File Compile.zip akan terdownload\n3. Extract file ZIP tersebut (klik kanan -> Extract Here)\n4. Pastikan Node.js sudah terinstall di komputer Anda\n   (Download Node.js di https://nodejs.org)\n5. Buka terminal/CMD, masuk ke folder Compile hasil extract\n6. Ketik perintah: npm install -g\n7. Setelah selesai, jalankan dengan perintah: npm start\n8. Buka browser dan akses alamat yang muncul (biasanya http://localhost:3000)'
+        download: 'https://github.com/FlowkitSoft/XBinder/raw/refs/heads/main/XBINDER.zip',
+        infoId: 'xbinder',
+        infoTitle: 'XBinder',
+        infoDesc: 'TUTORIAL DOWNLOAD & INSTALL XBINDER:\n\n1. Klik tombol Download untuk mengunduh file XBinder.zip\n2. Extract file ZIP tersebut\n3. Siapkan Python 3.12 (stabil)\n4. Buat venv: python -m venv venv\n5. Install requirement\n6. Jalankan perintah: python xbinder.py\n\n✅ Support OS: Windows, Linux, Android'
     }
 ];
 
