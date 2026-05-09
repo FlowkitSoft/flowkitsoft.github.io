@@ -73,7 +73,7 @@ const softwareList = [
         desc: 'Utility untuk menggabungkan dua file EXE menjadi satu file dan menjalankannya secara bersamaan.',
         meta1: '<i class="fas fa-code"></i> Binary',
         meta2: '<i class="fab fa-python"></i> Python',
-        download: '#',
+        download: 'https://github.com/FlowkitSoft/XBinder/raw/refs/heads/main/XBINDER.zip',
         infoId: 'xbinder',
         infoTitle: 'XBinder',
         infoDesc: 'TUTORIAL DOWNLOAD & INSTALL XBINDER:\n\n1. Klik tombol Download untuk mengunduh file XBinder.zip\n2. Extract file ZIP tersebut\n3. Siapkan Python 3.12 (stabil)\n4. Buat venv: python -m venv venv\n5. Install requirement\n6. Jalankan perintah: python xbinder.py\n\n✅ Support OS: Windows'
