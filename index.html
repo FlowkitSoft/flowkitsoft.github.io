@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <meta name="description" content="Flowkit - Repository unduh berbagai macam teknologi software dan perangkat lunak untuk keamanan, pengembangan, dan utilitas">
-    <title>Flowkit - Repository Software</title>
+    <meta name="description" content="Flowkit - Koleksi berbagai perangkat lunak untuk kebutuhan teknis, bisnis, dan utilitas">
+    <title>Flowkit - Koleksi Perangkat Lunak</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2341ff41'%3E%3Cpath d='M2.47,5.47H21.53V4H2.47M2.47,9.53H21.53V8.06H2.47M2.47,13.56H21.53V12.09H2.47M2.47,17.59H21.53V16.13H2.47'/%3E%3C/svg%3E">
@@ -49,20 +49,20 @@
                     <span class="terminal-text">root@flowkit:~#</span>
                 </div>
                 <h1 class="hero-title">
-                    <span class="glitch" data-text="REPOSITORY">REPOSITORY</span>
-                    <span class="hero-accent">SOFTWARE TECHNOLOGY</span>
+                    <span class="glitch" data-text="KOLEKSI">KOLEKSI</span>
+                    <span class="hero-accent">PERANGKAT LUNAK</span>
                 </h1>
-                <p class="hero-desc">Kumpulan berbagai macam software (perangkat lunak) untuk kebutuhan <span class="highlight">keamanan siber</span>, <span class="highlight">tools</span>, dan <span class="highlight">utilitas</span>. Download gratis.</p>
+                <p class="hero-desc">Kumpulan berbagai perangkat lunak untuk kebutuhan <span class="highlight">teknis</span>, <span class="highlight">bisnis</span>, dan <span class="highlight">utilitas</span>. Unduh gratis.</p>
                 <div class="hero-stats">
                     <div class="stat-item">
                         <i class="fas fa-database"></i>
                         <span id="totalSoftwareCount">0</span>
-                        <span>Software</span>
+                        <span>Perangkat Lunak</span>
                     </div>
                     <div class="stat-item">
                         <i class="fas fa-download"></i>
-                        <span>10k+</span>
-                        <span>Total Unduhan</span>
+                        <span>Ready</span>
+                        <span>Unduh</span>
                     </div>
                     <div class="stat-item">
                         <i class="fas fa-trophy"></i>
@@ -71,16 +71,13 @@
                     </div>
                 </div>
 
-                <!-- HERO COMMAND - LEBAR TETAP -->
+                <!-- HERO COMMAND - Typing Carousel -->
                 <div class="hero-command">
                     <span class="prompt">$</span>
                     <div class="typing-wrapper">
                         <span class="typing-text" id="typingText"></span>
                         <span class="cursor">|</span>
                     </div>
-                    <button class="copy-btn" onclick="copyToClipboard('https://flowkitsoft.github.io/')">
-                        <i class="fas fa-copy"></i>
-                    </button>
                 </div>
             </div>
         </div>
@@ -90,20 +87,20 @@
     <section class="software">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
-                <span class="section-tag">// AVAILABLE TOOLS</span>
-                <h2>Software (Perangkat Lunak)</h2>
-                <p>Pilih software yang Anda butuhkan, semua tersedia untuk diunduh secara gratis</p>
+                <span class="section-tag">// PERANGKAT TERSEDIA</span>
+                <h2>Perangkat Lunak (Software)</h2>
+                <p>Pilih perangkat lunak yang Anda butuhkan, semua tersedia untuk diunduh secara gratis.</p>
             </div>
             
             <!-- SEARCH BAR -->
             <div class="search-container">
                 <div class="search-box">
                     <i class="fas fa-search"></i>
-                    <input type="text" id="searchInput" placeholder="Cari software..." onkeyup="searchSoftware()">
+                    <input type="text" id="searchInput" placeholder="Cari perangkat lunak..." onkeyup="searchSoftware()">
                     <button class="search-clear" id="clearSearch" onclick="clearSearch()" style="display: none;">✕</button>
                 </div>
                 <div class="search-info">
-                    <span id="resultInfo">Menampilkan semua software</span>
+                    <span id="resultInfo">Menampilkan semua perangkat lunak</span>
                 </div>
             </div>
             
@@ -125,7 +122,7 @@
             <div class="modal-body">
                 <p id="modalDesc"></p>
                 <div class="modal-download">
-                    <a href="#" id="modalDownload" class="btn-download-modal"><i class="fas fa-download"></i> Download Sekarang</a>
+                    <a href="#" id="modalDownload" class="btn-download-modal"><i class="fas fa-download"></i> Unduh Sekarang</a>
                 </div>
             </div>
         </div>
@@ -139,23 +136,21 @@
                     <span class="terminal-dot red"></span>
                     <span class="terminal-dot yellow"></span>
                     <span class="terminal-dot green"></span>
-                    <span class="terminal-title">flowkit@repository:~</span>
+                    <span class="terminal-title">flowkit@collection:~</span>
                 </div>
                 <div class="terminal-body">
                     <p><span class="prompt">$</span> <span class="command">cat about.txt</span></p>
                     <pre class="terminal-simple">
-FLOWKIT - REPOSITORY SOFTWARE
-==============================
-Version: 2.0.0                              Release: 2026
+FLOWKIT - KOLEKSI PERANGKAT LUNAK
+=================================
 
-Flowkit adalah repository kumpulan berbagai macam software (perangkat
-lunak) untuk kebutuhan keamanan siber, tools, bisnis, dan utilitas.
+Flowkit adalah kumpulan berbagai perangkat lunak untuk kebutuhan
+teknis, bisnis, dan utilitas.
 
-Semua software tersedia secara GRATIS.
-Kontribusi dan feedback sangat kami harapkan.
+Semua perangkat lunak tersedia secara GRATIS.
 
-Dibuat oleh: Salman A
-Dengan bantuan: AI-powered
+GitHub: https://github.com/flowkit
+Email: contact@flowkit.com
                     </pre>
                     <p><span class="prompt">$</span> <span class="command blinking">_</span></p>
                 </div>
@@ -172,15 +167,15 @@ Dengan bantuan: AI-powered
                         <i class="fas fa-tasks"></i>
                         <span>FLOWKIT</span>
                     </div>
-                    <p>Repository kumpulan berbagai macam software (perangkat lunak) technology.</p>
+                    <p>Koleksi berbagai perangkat lunak untuk kebutuhan teknis, bisnis, dan utilitas.</p>
                     <div class="footer-links">
                         <a href="mailto:contact@flowkit.com"><i class="fas fa-envelope"></i> contact@flowkit.com</a>
-                        <a href="#" class="donate-btn"><i class="fas fa-heart"></i> Donate</a>
+                        <a href="#" class="donate-btn"><i class="fas fa-heart"></i> Donasi</a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 FLOWKIT | Repository Software Technology | #StaySecure #Gratis</p>
+                <p>&copy; 2026 FLOWKIT | Koleksi Perangkat Lunak | #StaySecure #Gratis</p>
             </div>
         </div>
     </footer>

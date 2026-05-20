@@ -190,34 +190,43 @@ function copyToClipboard(text) {
     });
 }
 
-// ========== TYPING EFFECT ==========
+// ========== TYPING CAROUSEL EFFECT ==========
 document.addEventListener('DOMContentLoaded', function() {
-    const textToType = "https://flowkitsoft.github.io/";
-    const typingElement = document.getElementById('typingText');
-    if (!typingElement) return;
-
+    const phrases = [
+        "Unduh Perangkat Lunak",
+        "Gratis 100%",
+        "Siap Pakai"
+    ];
+    
+    let phraseIndex = 0;
     let i = 0;
     let isDeleting = false;
-
+    const typingElement = document.getElementById('typingText');
+    
+    if (!typingElement) return;
+    
     function typeWriter() {
-        if (!isDeleting && i <= textToType.length) {
-            typingElement.innerHTML = textToType.substring(0, i);
+        const currentPhrase = phrases[phraseIndex];
+        
+        if (!isDeleting && i <= currentPhrase.length) {
+            typingElement.innerHTML = currentPhrase.substring(0, i);
             i++;
             setTimeout(typeWriter, 80);
         } else if (isDeleting && i >= 0) {
-            typingElement.innerHTML = textToType.substring(0, i);
+            typingElement.innerHTML = currentPhrase.substring(0, i);
             i--;
             setTimeout(typeWriter, 40);
-        } else if (i === textToType.length + 1) {
+        } else if (i === currentPhrase.length + 1) {
             isDeleting = true;
             setTimeout(typeWriter, 2000);
         } else if (i === -1) {
             isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
             i = 0;
             setTimeout(typeWriter, 500);
         }
     }
-
+    
     typeWriter();
 });
 
