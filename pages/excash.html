@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowKit Tools</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23161b22'/%3E%3Ctext x='50' y='72' font-size='55' text-anchor='middle' fill='%2300d4ff'%3E⎇%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .detail-container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        .back-button {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: var(--card-bg); border: 1px solid var(--border-color);
+            padding: 0.6rem 1.2rem; border-radius: 8px;
+            color: var(--text-primary); text-decoration: none; margin-bottom: 2rem;
+            transition: all 0.2s;
+        }
+        .back-button:hover { border-color: var(--accent); color: var(--accent); }
+        .tool-detail-header {
+            display: grid; grid-template-columns: auto 1fr; gap: 2rem;
+            margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border-color);
+        }
+        .tool-detail-icon {
+            width: 100px; height: 100px; background: rgba(0, 212, 255, 0.1);
+            border-radius: 20px; display: flex; align-items: center; justify-content: center;
+        }
+        .tool-detail-icon i { font-size: 3.5rem; color: var(--accent); }
+        .tool-detail-info h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .tool-detail-meta {
+            display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0;
+        }
+        .tool-detail-meta span {
+            background: var(--card-bg); padding: 0.3rem 0.8rem;
+            border-radius: 20px; font-size: 0.8rem;
+        }
+        .download-section {
+            background: var(--card-bg); border: 1px solid var(--border-color);
+            border-radius: 16px; padding: 2rem; margin-bottom: 2rem; text-align: center;
+        }
+        .download-btn {
+            display: inline-flex; align-items: center; gap: 1rem;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: var(--bg-primary); padding: 1rem 2rem; border-radius: 12px;
+            text-decoration: none; font-weight: 600; font-size: 1.1rem;
+            transition: all 0.3s; margin: 1rem 0;
+        }
+        .download-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3); }
+        .tutorial-section {
+            background: var(--card-bg); border: 1px solid var(--border-color);
+            border-radius: 16px; padding: 2rem; margin-top: 2rem;
+        }
+        .tutorial-section h3 {
+            margin-bottom: 1.5rem; color: var(--accent);
+            display: flex; align-items: center; gap: 0.75rem;
+        }
+        .step-list { list-style: none; padding: 0; }
+        .step-list li {
+            display: flex; align-items: flex-start; gap: 1rem;
+            padding: 0.75rem 0; border-bottom: 1px solid var(--border-color);
+        }
+        .step-list li:last-child { border-bottom: none; }
+        .step-number {
+            width: 28px; height: 28px; background: rgba(0, 212, 255, 0.1);
+            border-radius: 50%; display: inline-flex; align-items: center;
+            justify-content: center; font-size: 0.8rem; font-weight: 600;
+            color: var(--accent); flex-shrink: 0;
+        }
+        .step-text { color: var(--text-secondary); line-height: 1.5; }
+        .step-text strong { color: var(--text-primary); }
+        .info-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem; margin-top: 1.5rem;
+        }
+        .info-card {
+            background: var(--bg-primary); border: 1px solid var(--border-color);
+            border-radius: 12px; padding: 1rem; text-align: center;
+        }
+        .info-card i { font-size: 1.5rem; color: var(--accent); margin-bottom: 0.5rem; }
+        .info-card .label { font-size: 0.7rem; color: var(--text-secondary); }
+        .info-card .value { font-size: 1rem; font-weight: 600; }
+        .platform-badge {
+            display: inline-block;
+            background: rgba(0, 212, 255, 0.1);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            margin: 0 0.2rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-code-branch"></i>
+                <span>FlowKit</span>
+                <span class="logo-badge">Tools Suite</span>
+            </div>
+            <div class="nav-stats">
+                <i class="fas fa-toolbox"></i>
+                <span id="toolsCount"></span>
+                <span>tools</span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="detail-container">
+        <a href="../index.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Kembali ke Daftar Tools
+        </a>
+
+        <div id="toolDetail">
+            <div style="text-align: center; padding: 3rem;">
+                <i class="fas fa-spinner fa-pulse"></i> Memuat...
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <i class="fas fa-code-branch"></i>
+                <span>FlowKit</span>
+            </div>
+            <div class="footer-right">
+                <div class="footer-stat">
+                    <i class="fas fa-database"></i>
+                    <span>Total: <strong id="totalToolsFooter">6</strong> tools</span>
+                </div>
+                <div class="footer-stat">
+                    <i class="fas fa-globe"></i>
+                    <span>web based</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/toolsData.js"></script>
+    <script>
+        const toolId = window.location.pathname.split('/').pop().replace('.html', '');
+        const tool = getToolById(toolId);
+
+        function renderDetail() {
+            if (!tool) {
+                document.getElementById('toolDetail').innerHTML = `
+                    <div style="text-align: center; padding: 3rem;">
+                        <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: var(--danger);"></i>
+                        <h2>Tool tidak ditemukan</h2>
+                        <a href="../index.html" class="download-btn" style="margin-top: 1rem;">Kembali ke Beranda</a>
+                    </div>
+                `;
+                return;
+            }
+
+            // Generate platform badges
+            const platformBadges = tool.platform.map(p => `<span class="platform-badge">${p}</span>`).join('');
+
+            // Generate tutorial steps
+            const tutorialSteps = tool.tutorial.map((step, index) => `
+                <li>
+                    <span class="step-number">${index + 1}</span>
+                    <span class="step-text">${step}</span>
+                </li>
+            `).join('');
+
+            document.getElementById('toolDetail').innerHTML = `
+                <div class="tool-detail-header">
+                    <div class="tool-detail-icon">
+                        <i class="${tool.icon}"></i>
+                    </div>
+                    <div class="tool-detail-info">
+                        <h1>${tool.name}</h1>
+                        <p style="color: var(--text-secondary); font-size: 1rem;">${tool.description}</p>
+                        <div class="tool-detail-meta">
+                            <span><i class="fas fa-code-branch"></i> v${tool.version}</span>
+                            <span><i class="fas fa-hdd"></i> ${tool.fileSize}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="download-section">
+                    <h2>Download ${tool.name}</h2>
+                    <a href="${tool.downloadUrl}" class="download-btn" download>
+                        <i class="fas fa-download"></i> Download v${tool.version}
+                    </a>
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <i class="fab fa-windows"></i>
+                            <div class="label">Platform</div>
+                            <div class="value">${platformBadges}</div>
+                        </div>
+                        <div class="info-card">
+                            <i class="fas fa-calendar"></i>
+                            <div class="label">Tanggal Rilis</div>
+                            <div class="value">${tool.releaseDate}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tutorial-section">
+                    <h3><i class="fas fa-book-open"></i> Tutorial Download & Install</h3>
+                    <ul class="step-list">
+                        ${tutorialSteps}
+                    </ul>
+                </div>
+            `;
+
+            document.getElementById('toolsCount').textContent = toolsData.length;
+            document.getElementById('totalToolsFooter').textContent = toolsData.length;
+        }
+
+        renderDetail();
+    </script>
+</body>
+</html>

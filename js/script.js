@@ -1,238 +1,212 @@
-// ========== GLOBAL VARIABLES ==========
-let currentPage = 1;
-const itemsPerPage = 6;
-let filteredSoftware = [...softwareList];
-let currentSearchTerm = '';
+// ============================================
+// FLOWKIT - MAIN SCRIPT
+// toolsData diambil dari file terpisah (toolsData.js)
+// ============================================
 
-// ========== RENDER SOFTWARE GRID ==========
-function renderSoftwareGrid() {
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    const paginatedItems = filteredSoftware.slice(startIndex, endIndex);
-    const softwareGrid = document.getElementById('softwareGrid');
-    
-    if (!softwareGrid) return;
-    
-    if (filteredSoftware.length === 0) {
-        softwareGrid.innerHTML = `<div class="no-results">
-            <i class="fas fa-search"></i>
-            <p>Tidak ada software yang ditemukan</p>
-            <p>Coba dengan kata kunci lain</p>
-        </div>`;
-        document.getElementById('paginationContainer').innerHTML = '';
-        document.getElementById('totalSoftwareCount').innerText = softwareList.length;
-        document.getElementById('resultInfo').innerHTML = 'Tidak ada hasil yang ditemukan';
-        return;
-    }
-    
-    let html = '';
-    paginatedItems.forEach((software, index) => {
-        const delay = 100 + (index * 50);
-        html += `
-            <div class="software-card" data-aos="fade-up" data-aos-delay="${delay}">
-                <div class="card-header">
-                    <div class="card-icon"><i class="${software.icon}"></i></div>
-                    <div class="card-badge">${software.badge}</div>
-                </div>
-                <h3>${software.title}</h3>
-                <p>${software.desc}</p>
-                <div class="card-meta">
-                    <span>${software.meta1}</span>
-                    <span>${software.meta2}</span>
-                </div>
-                <div class="card-actions">
-                    <a href="${software.download}" class="btn-download"><i class="fas fa-download"></i> Download</a>
-                    <button class="btn-info" onclick="showInfo('${software.infoId}')"><i class="fas fa-info-circle"></i></button>
-                </div>
-            </div>
-        `;
-    });
-    
-    softwareGrid.innerHTML = html;
-    
-    document.getElementById('totalSoftwareCount').innerText = softwareList.length;
-    
-    const startNum = startIndex + 1;
-    const endNum = Math.min(endIndex, filteredSoftware.length);
-    document.getElementById('resultInfo').innerHTML = `Menampilkan ${startNum}-${endNum} dari ${filteredSoftware.length} software`;
-    
-    if (typeof AOS !== 'undefined') {
-        AOS.refresh();
-    }
-    
-    renderPagination();
-}
+// State management
+let currentCategory = "all";
+let currentSearch = "";
+let currentSort = "name";
 
-// ========== RENDER PAGINATION ==========
-function renderPagination() {
-    const totalPages = Math.ceil(filteredSoftware.length / itemsPerPage);
-    const paginationContainer = document.getElementById('paginationContainer');
-    
-    if (!paginationContainer) return;
-    
-    if (totalPages <= 1) {
-        paginationContainer.innerHTML = '';
-        return;
-    }
-    
-    let html = '<div class="pagination">';
-    
-    if (currentPage > 1) {
-        html += `<button class="page-btn" onclick="changePage(${currentPage - 1})"><i class="fas fa-chevron-left"></i> Sebelumnya</button>`;
-    } else {
-        html += `<button class="page-btn disabled" disabled><i class="fas fa-chevron-left"></i> Sebelumnya</button>`;
-    }
-    
-    for (let i = 1; i <= totalPages; i++) {
-        if (i === currentPage) {
-            html += `<button class="page-btn active" onclick="changePage(${i})">${i}</button>`;
-        } else {
-            html += `<button class="page-btn" onclick="changePage(${i})">${i}</button>`;
+// DOM Elements
+const toolsGrid = document.getElementById("toolsGrid");
+const emptyState = document.getElementById("emptyState");
+const searchInput = document.getElementById("searchInput");
+const filterBtns = document.querySelectorAll(".filter-btn");
+const sortSelect = document.getElementById("sortSelect");
+const toolsCountSpan = document.getElementById("toolsCount");
+const resultCountSpan = document.getElementById("resultCount");
+const totalToolsFooterSpan = document.getElementById("totalToolsFooter");
+
+// Filter dan sorting
+function getFilteredAndSortedTools() {
+    let filtered = toolsData.filter(tool => {
+        if (currentCategory !== "all" && tool.category !== currentCategory) {
+            return false;
         }
-    }
-    
-    if (currentPage < totalPages) {
-        html += `<button class="page-btn" onclick="changePage(${currentPage + 1})">Selanjutnya <i class="fas fa-chevron-right"></i></button>`;
-    } else {
-        html += `<button class="page-btn disabled" disabled>Selanjutnya <i class="fas fa-chevron-right"></i></button>`;
-    }
-    
-    html += '</div>';
-    paginationContainer.innerHTML = html;
+        if (currentSearch) {
+            const searchLower = currentSearch.toLowerCase();
+            return tool.name.toLowerCase().includes(searchLower) || 
+                   tool.description.toLowerCase().includes(searchLower);
+        }
+        return true;
+    });
+
+    filtered.sort((a, b) => {
+        switch(currentSort) {
+            case "name":
+                return a.name.localeCompare(b.name);
+            case "name-desc":
+                return b.name.localeCompare(a.name);
+            case "category":
+                return a.category.localeCompare(b.category);
+            default:
+                return 0;
+        }
+    });
+
+    return filtered;
 }
 
-// ========== CHANGE PAGE ==========
-function changePage(page) {
-    currentPage = page;
-    renderSoftwareGrid();
-    document.querySelector('.software').scrollIntoView({ behavior: 'smooth' });
-}
-
-// ========== SEARCH SOFTWARE ==========
-function searchSoftware() {
-    const searchInput = document.getElementById('searchInput');
-    const searchTerm = searchInput.value.toLowerCase().trim();
-    currentSearchTerm = searchTerm;
-    const clearBtn = document.getElementById('clearSearch');
-    
-    if (searchTerm === '') {
-        filteredSoftware = [...softwareList];
-        if (clearBtn) clearBtn.style.display = 'none';
-    } else {
-        filteredSoftware = softwareList.filter(software => 
-            software.title.toLowerCase().includes(searchTerm) ||
-            software.badge.toLowerCase().includes(searchTerm) ||
-            software.desc.toLowerCase().includes(searchTerm)
-        );
-        if (clearBtn) clearBtn.style.display = 'flex';
-    }
-    
-    currentPage = 1;
-    renderSoftwareGrid();
-}
-
-// ========== CLEAR SEARCH ==========
-function clearSearch() {
-    const searchInput = document.getElementById('searchInput');
-    if (searchInput) {
-        searchInput.value = '';
-    }
-    filteredSoftware = [...softwareList];
-    currentSearchTerm = '';
-    currentPage = 1;
-    document.getElementById('clearSearch').style.display = 'none';
-    renderSoftwareGrid();
-}
-
-// ========== MODAL INFO ==========
-const modal = document.getElementById('infoModal');
-const modalTitle = document.getElementById('modalTitle');
-const modalDesc = document.getElementById('modalDesc');
-const modalDownload = document.getElementById('modalDownload');
-const closeModal = document.querySelector('.modal-close');
-
-const softwareDetails = {};
-softwareList.forEach(software => {
-    softwareDetails[software.infoId] = {
-        title: software.infoTitle,
-        desc: software.infoDesc,
-        download: software.download
+// Get category name
+function getCategoryName(category) {
+    const categories = {
+        financial: "Keuangan",
+        development: "Development",
+        security: "Keamanan",
+        utility: "Utility"
     };
-});
-
-function showInfo(softwareId) {
-    const data = softwareDetails[softwareId];
-    if (data) {
-        modalTitle.textContent = data.title;
-        const formattedDesc = data.desc.replace(/\n/g, '<br>');
-        modalDesc.innerHTML = formattedDesc;
-        modalDownload.href = data.download;
-        modal.style.display = 'flex';
-    }
+    return categories[category] || category;
 }
 
-if (closeModal) {
-    closeModal.onclick = function() {
-        modal.style.display = 'none';
+// Render tools
+function renderTools() {
+    const filteredTools = getFilteredAndSortedTools();
+    const count = filteredTools.length;
+    
+    toolsCountSpan.textContent = toolsData.length;
+    resultCountSpan.textContent = count;
+    totalToolsFooterSpan.textContent = toolsData.length;
+
+    if (filteredTools.length === 0) {
+        toolsGrid.style.display = "none";
+        emptyState.style.display = "block";
+        return;
     }
+
+    toolsGrid.style.display = "grid";
+    emptyState.style.display = "none";
+
+    toolsGrid.innerHTML = filteredTools.map(tool => `
+        <div class="tool-card" data-id="${tool.id}" data-name="${tool.name}">
+            <div class="tool-icon">
+                <i class="${tool.icon}"></i>
+            </div>
+            
+            <h3 class="tool-name">${tool.name}</h3>
+            <p class="tool-description">${tool.description}</p>
+            
+            <div class="tool-meta">
+                <span class="tool-category">
+                    <i class="fas fa-tag"></i> ${getCategoryName(tool.category)}
+                </span>
+                <span class="tool-version">
+                    <i class="fas fa-code-branch"></i> v${tool.version}
+                </span>
+            </div>
+            
+            <div class="click-hint">
+                <i class="fas fa-info-circle"></i>
+                <span>klik untuk lihat detail & download</span>
+            </div>
+        </div>
+    `).join("");
+
+    attachCardEvents();
 }
 
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = 'none';
-    }
-}
-
-// ========== COPY TO CLIPBOARD ==========
-function copyToClipboard(text) {
-    navigator.clipboard.writeText(text).then(() => {
-        alert('Perintah berhasil disalin!');
+// Event handler untuk klik card (arah ke halaman detail)
+function attachCardEvents() {
+    const cards = document.querySelectorAll(".tool-card");
+    cards.forEach(card => {
+        card.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const toolId = card.getAttribute("data-id");
+            const toolName = card.getAttribute("data-name");
+            
+            card.style.transform = "scale(0.98)";
+            setTimeout(() => {
+                card.style.transform = "";
+            }, 150);
+            
+            // Arahkan ke halaman detail
+            window.location.href = `pages/${toolId}.html`;
+        });
     });
 }
 
-// ========== TYPING CAROUSEL EFFECT ==========
-document.addEventListener('DOMContentLoaded', function() {
-    const phrases = [
-        "Unduh Perangkat Lunak",
-        "Gratis 100%",
-        "Siap Pakai"
-    ];
-    
-    let phraseIndex = 0;
-    let i = 0;
-    let isDeleting = false;
-    const typingElement = document.getElementById('typingText');
-    
-    if (!typingElement) return;
-    
-    function typeWriter() {
-        const currentPhrase = phrases[phraseIndex];
+// Notification
+function showNotification(message, type = "info") {
+    let notification = document.querySelector(".custom-notif");
+    if (!notification) {
+        notification = document.createElement("div");
+        notification.className = "custom-notif";
+        document.body.appendChild(notification);
         
-        if (!isDeleting && i <= currentPhrase.length) {
-            typingElement.innerHTML = currentPhrase.substring(0, i);
-            i++;
-            setTimeout(typeWriter, 80);
-        } else if (isDeleting && i >= 0) {
-            typingElement.innerHTML = currentPhrase.substring(0, i);
-            i--;
-            setTimeout(typeWriter, 40);
-        } else if (i === currentPhrase.length + 1) {
-            isDeleting = true;
-            setTimeout(typeWriter, 2000);
-        } else if (i === -1) {
-            isDeleting = false;
-            phraseIndex = (phraseIndex + 1) % phrases.length;
-            i = 0;
-            setTimeout(typeWriter, 500);
-        }
+        const style = document.createElement("style");
+        style.textContent = `
+            .custom-notif {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: var(--card-bg);
+                border: 1px solid var(--border-color);
+                border-left: 3px solid var(--accent);
+                padding: 0.75rem 1.25rem;
+                font-size: 0.85rem;
+                z-index: 10000;
+                animation: slideInRight 0.3s ease-out;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            }
+            .custom-notif.error {
+                border-left-color: var(--danger);
+            }
+            @keyframes slideInRight {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+        `;
+        document.head.appendChild(style);
     }
     
-    typeWriter();
+    notification.className = `custom-notif ${type}`;
+    notification.innerHTML = `<i class="fas fa-info-circle"></i> ${message}`;
+    notification.style.display = "block";
+    
+    setTimeout(() => {
+        notification.style.opacity = "0";
+        setTimeout(() => {
+            notification.style.display = "none";
+            notification.style.opacity = "1";
+        }, 300);
+    }, 2500);
+}
+
+// Event Listeners
+searchInput.addEventListener("input", (e) => {
+    currentSearch = e.target.value;
+    renderTools();
 });
 
-// ========== INITIAL RENDER ==========
-document.addEventListener('DOMContentLoaded', function() {
-    if (typeof renderSoftwareGrid === 'function') {
-        renderSoftwareGrid();
-    }
+filterBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+        filterBtns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        currentCategory = btn.getAttribute("data-category");
+        renderTools();
+    });
 });
+
+sortSelect.addEventListener("change", (e) => {
+    currentSort = e.target.value;
+    renderTools();
+});
+
+// Inisialisasi
+document.addEventListener("DOMContentLoaded", () => {
+    renderTools();
+    console.log(`✅ FlowKit siap | ${toolsData.length} tools tersedia`);
+});
+
+// Expose ke global
+window.addTool = (newTool) => {
+    console.warn("Add tool via toolsData.js langsung");
+    return false;
+};

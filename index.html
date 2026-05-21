@@ -2,193 +2,111 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <meta name="description" content="Flowkit - Koleksi berbagai perangkat lunak untuk kebutuhan teknis, bisnis, dan utilitas">
-    <title>Flowkit - Koleksi Perangkat Lunak</title>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2341ff41'%3E%3Cpath d='M2.47,5.47H21.53V4H2.47M2.47,9.53H21.53V8.06H2.47M2.47,13.56H21.53V12.09H2.47M2.47,17.59H21.53V16.13H2.47'/%3E%3C/svg%3E">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowKit - Tools Collection</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23161b22'/%3E%3Ctext x='50' y='72' font-size='55' text-anchor='middle' fill='%2300d4ff'%3E⎇%3C/text%3E%3C/svg%3E">
     <link rel="stylesheet" href="css/style.css">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    
-    <!-- AOS Animation -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- NAVIGATION -->
+    <!-- Navbar -->
     <nav class="navbar">
-        <div class="container">
+        <div class="nav-container">
             <div class="logo">
-                <i class="fas fa-tasks"></i>
-                <span>FLOWKIT</span>
+                <i class="fas fa-code-branch"></i>
+                <span>FlowKit</span>
+                <span class="logo-badge">Tools Suite</span>
             </div>
-            <ul class="nav-links">
-                <li><a href="mailto:contact@flowkit.com" class="contact-btn">
-                    <i class="fas fa-paper-plane"></i> KONTAK
-                </a></li>
-            </ul>
+            <div class="nav-search">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Cari tools...">
+            </div>
+            <div class="nav-stats">
+                <i class="fas fa-toolbox"></i>
+                <span id="toolsCount">0</span>
+                <span>tools</span>
+            </div>
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
-                <div class="terminal-badge">
-                    <span class="terminal-dot red"></span>
-                    <span class="terminal-dot yellow"></span>
-                    <span class="terminal-dot green"></span>
-                    <span class="terminal-text">root@flowkit:~#</span>
-                </div>
-                <h1 class="hero-title">
-                    <span class="glitch" data-text="KOLEKSI">KOLEKSI</span>
-                    <span class="hero-accent">PERANGKAT LUNAK</span>
-                </h1>
-                <p class="hero-desc">Kumpulan berbagai perangkat lunak untuk kebutuhan <span class="highlight">teknis</span>, <span class="highlight">bisnis</span>, dan <span class="highlight">utilitas</span>. Unduh gratis.</p>
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <i class="fas fa-database"></i>
-                        <span id="totalSoftwareCount">0</span>
-                        <span>Perangkat Lunak</span>
-                    </div>
-                    <div class="stat-item">
-                        <i class="fas fa-download"></i>
-                        <span>Ready</span>
-                        <span>Unduh</span>
-                    </div>
-                    <div class="stat-item">
-                        <i class="fas fa-trophy"></i>
-                        <span>100%</span>
-                        <span>Gratis</span>
-                    </div>
-                </div>
-
-                <!-- HERO COMMAND - Typing Carousel -->
-                <div class="hero-command">
-                    <span class="prompt">$</span>
-                    <div class="typing-wrapper">
-                        <span class="typing-text" id="typingText"></span>
-                        <span class="cursor">|</span>
-                    </div>
-                </div>
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Tools <span>Collection</span></h1>
+            <p>Koleksi utility tools untuk produktivitas dan development</p>
+            <div class="category-filters">
+                <button class="filter-btn active" data-category="all">
+                    <i class="fas fa-border-all"></i> Semua
+                </button>
+                <button class="filter-btn" data-category="financial">
+                    <i class="fas fa-chart-line"></i> Keuangan
+                </button>
+                <button class="filter-btn" data-category="development">
+                    <i class="fas fa-code"></i> Development
+                </button>
+                <button class="filter-btn" data-category="security">
+                    <i class="fas fa-shield-alt"></i> Keamanan
+                </button>
+                <button class="filter-btn" data-category="utility">
+                    <i class="fas fa-wrench"></i> Utility
+                </button>
             </div>
         </div>
-    </section>
+    </header>
 
-    <!-- SOFTWARE SECTION -->
-    <section class="software">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <span class="section-tag">// PERANGKAT TERSEDIA</span>
-                <h2>Perangkat Lunak (Software)</h2>
-                <p>Pilih perangkat lunak yang Anda butuhkan, semua tersedia untuk diunduh secara gratis.</p>
+    <!-- Main Content -->
+    <main class="container">
+        <div class="tools-header">
+            <div class="tools-header-left">
+                <i class="fas fa-th"></i>
+                <span>Daftar Tools</span>
+                <span class="tools-badge" id="resultCount">6</span>
             </div>
-            
-            <!-- SEARCH BAR -->
-            <div class="search-container">
-                <div class="search-box">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="searchInput" placeholder="Cari perangkat lunak..." onkeyup="searchSoftware()">
-                    <button class="search-clear" id="clearSearch" onclick="clearSearch()" style="display: none;">✕</button>
-                </div>
-                <div class="search-info">
-                    <span id="resultInfo">Menampilkan semua perangkat lunak</span>
-                </div>
-            </div>
-            
-            <!-- SOFTWARE GRID -->
-            <div class="software-grid" id="softwareGrid"></div>
-            
-            <!-- PAGINATION -->
-            <div class="pagination-container" id="paginationContainer"></div>
-        </div>
-    </section>
-
-    <!-- INFO MODAL -->
-    <div id="infoModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="modalTitle"></h3>
-                <span class="modal-close">&times;</span>
-            </div>
-            <div class="modal-body">
-                <p id="modalDesc"></p>
-                <div class="modal-download">
-                    <a href="#" id="modalDownload" class="btn-download-modal"><i class="fas fa-download"></i> Unduh Sekarang</a>
-                </div>
+            <div class="tools-header-right">
+                <select id="sortSelect" class="sort-select">
+                    <option value="name">Urutkan: Nama ↑</option>
+                    <option value="name-desc">Urutkan: Nama ↓</option>
+                    <option value="category">Urutkan: Kategori</option>
+                </select>
             </div>
         </div>
-    </div>
 
-    <!-- ABOUT / TERMINAL SECTION -->
-    <section class="about-terminal">
-        <div class="container">
-            <div class="terminal-window" data-aos="fade-up">
-                <div class="terminal-header">
-                    <span class="terminal-dot red"></span>
-                    <span class="terminal-dot yellow"></span>
-                    <span class="terminal-dot green"></span>
-                    <span class="terminal-title">flowkit@collection:~</span>
-                </div>
-                <div class="terminal-body">
-                    <p><span class="prompt">$</span> <span class="command">cat about.txt</span></p>
-                    <pre class="terminal-simple">
-FLOWKIT - KOLEKSI PERANGKAT LUNAK
-=================================
+        <div class="tools-grid" id="toolsGrid">
+            <!-- Tools akan diisi oleh JavaScript -->
+        </div>
 
-Flowkit adalah kumpulan berbagai perangkat lunak untuk kebutuhan
-teknis, bisnis, dan utilitas.
-
-Semua perangkat lunak tersedia secara GRATIS.
-
-GitHub: https://github.com/flowkit
-Email: contact@flowkit.com
-                    </pre>
-                    <p><span class="prompt">$</span> <span class="command blinking">_</span></p>
-                </div>
+        <!-- Empty State -->
+        <div class="empty-state" id="emptyState" style="display: none;">
+            <div class="empty-card">
+                <i class="fas fa-box-open"></i>
+                <h3>Tidak ada tools ditemukan</h3>
+                <p>Coba dengan kata kunci lain</p>
             </div>
         </div>
-    </section>
+    </main>
 
-    <!-- FOOTER -->
+    <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-about">
-                    <div class="logo">
-                        <i class="fas fa-tasks"></i>
-                        <span>FLOWKIT</span>
-                    </div>
-                    <p>Koleksi berbagai perangkat lunak untuk kebutuhan teknis, bisnis, dan utilitas.</p>
-                    <div class="footer-links">
-                        <a href="mailto:contact@flowkit.com"><i class="fas fa-envelope"></i> contact@flowkit.com</a>
-                        <a href="#" class="donate-btn"><i class="fas fa-heart"></i> Donasi</a>
-                    </div>
-                </div>
+        <div class="footer-content">
+            <div class="footer-left">
+                <i class="fas fa-code-branch"></i>
+                <span>FlowKit</span>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 FLOWKIT | Koleksi Perangkat Lunak | #StaySecure #Gratis</p>
+            <div class="footer-right">
+                <div class="footer-stat">
+                    <i class="fas fa-database"></i>
+                    <span>Total: <strong id="totalToolsFooter">6</strong> tools</span>
+                </div>
+                <div class="footer-stat">
+                    <i class="fas fa-globe"></i>
+                    <span>web based</span>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- JS -->
-    <script src="js/software-data.js"></script>
+    <script src="js/toolsData.js"></script>
     <script src="js/script.js"></script>
-    
-    <script>
-        AOS.init({
-            once: true,
-            duration: 800
-        });
-    </script>
 </body>
 </html>
